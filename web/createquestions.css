@@ -1,0 +1,240 @@
+  /* General styles */
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #c850c0, #4158d0);
+    margin: 0;
+    padding: 0;
+    height: 100vh; /* Ensures full height */
+    display: flex;
+}
+
+/* Container styles */
+.container {
+    display: flex;
+    width: 100%;
+    height: 100vh; /* Full height for both sidebar and content */
+}
+
+/* Sidebar Styles */
+.sidebar {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    color: white;
+    width: 260px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Aligns sidebar content to the top */
+    height: 100%; /* Makes the sidebar take full height */
+    border-radius: 15px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.user-info {
+    text-align: center;
+}
+
+.user-info img {
+    border-radius: 50%;
+    width: 80px;
+    margin-bottom: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.menu {
+    margin-top: 40px; /* Move menu down */
+    flex-grow: 1; /* Fills remaining space in the sidebar */
+}
+
+.menu ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.menu ul li {
+    margin: 20px 0;
+}
+
+.menu ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.menu ul li a:hover {
+    transform: translateX(10px);
+    color: #f39c12;
+}
+
+.menu ul li a i {
+    margin-right: 12px;
+}
+
+/* Content styles */
+.content {
+    flex-grow: 1; /* Makes content container grow to fill the available space */
+    padding: 40px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    overflow-y: auto; /* Ensures content can scroll if it overflows */
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.header h1 {
+    font-size: 28px;
+    font-weight: 600;
+}
+
+.logout-btn {
+    background: #e74c3c;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 10px;
+    font-size: 14px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+    transition: all 0.3s ease;
+}
+
+.logout-btn:hover {
+    background: #c0392b;
+    box-shadow: 0 6px 20px rgba(192, 57, 43, 0.3);
+}
+
+/* Welcome message */
+.welcome {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Form section styles */
+.form-section {
+    margin-top: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.form-section h2 {
+    margin-bottom: 20px;
+    color: #f39c12;
+}
+
+/* Input field styles */
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: #ffffff;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    transition: border-color 0.3s;
+}
+
+input[type="text"]:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+/* Button styles */
+.button-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Question section styles */
+.question-section {
+    margin-top: 30px;
+}
+
+.question-section h2 {
+    margin-bottom: 20px;
+    color: #f39c12;
+}
+
+#questionList {
+    margin-bottom: 20px;
+}
+
+.question-block {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.btn-container {
+    margin-top: 10px;
+}
+
+.btn-container button {
+    margin-right: 10px;
+    background-color: #1254bf;
+}
+
+.btn-container button:hover {
+    background-color: #218838;
+}
+
+.submit-btn {
+    background-color: #28a745;
+    width: 100%;
+}
+
+.submit-btn:hover {
+    background-color: #218838;
+}
+
+/* Media queries for responsive design */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 200px;
+    }
+
+    .content {
+        padding: 20px;
+    }
+
+    .dashboard-sections {
+        flex-direction: column;
+    }
+
+    .dashboard-item {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}

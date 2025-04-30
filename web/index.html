@@ -1,0 +1,100 @@
+<!--<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="x-icon" href="user-icon.png">
+    <title>Login Page</title>
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <main class="container-border">
+        <div class="login-container">
+            <h1>Login to your account</h1>
+            <div class="form-content">
+                <form method="post" action="/Login">
+                    <div class="input-group">
+                        <label for="Username">Username:</label>
+                        <input class="input-field" type="text" name="user" id="user" placeholder="Enter Username" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="password">Password:</label>
+                        <input class="input-field" type="password" name="pwd" id="pwd" placeholder="Enter Password" required>
+                    </div>
+                    <div class="forgot-pwd">
+                        <a href="forgot">Forgot?</a>
+                    </div>
+
+                    <div class="login-btn">
+                        <button type="button" onclick="window.location.href='dashboard.jsp';">Login</button>
+                    </div>
+
+                    <div class="signup">
+                        <span>Don't have an account?</span>
+                        <a href="singup.html">Signup</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>-->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--<link rel="shortcut icon" type=" x-icon" href="user icon.png">-->
+    <title> Login Page</title>
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+
+<body>
+    
+    <main class="container-border">
+        <div class="login-container">
+            <h1>Login to your account</h1>
+            <div class="form-content">
+                <form method="post" action="LoginServlet">
+                    <div class="input-group">
+                        <label for="Username">Username:</label>
+                        <input class="input-field" type="text" name="username" id="user" placeholder="Enter Username"
+                            required>
+                    </div>
+                    <div class="input-group">
+                        <label for="password">Password:</label>
+                        <input class="input-field" type="password" name="password" id="pwd" placeholder="Enter Password"
+                            required>
+                    </div>
+                    <div class="forgot-pwd">
+                    <a href="forgot.html">Forgot?</a>
+
+                    </div>
+
+                    <div class="login-btn">
+                       
+                       <button>Login</button>
+                    </div>
+                    
+                    <div class="signup">
+                        <span>Don't have an account?</span>
+                        <a href="singup.html">Signup</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+</body>
+
+</html>

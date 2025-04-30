@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Faculty Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      color: #333;
+    }
+    .container {
+      display: flex;
+      min-height: 100vh;
+    }
+    .sidebar {
+      width: 250px;
+      background: #1e1e2f;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 20px;
+      box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
+      position: fixed;
+      left: 0;
+      height: 100%;
+      transition: transform 0.3s ease;
+      z-index: 1000;
+    }
+    .sidebar.hidden {
+      transform: translateX(-250px);
+    }
+    .content {
+      flex: 1;
+      padding: 20px;
+      margin-left: 250px;
+      transition: margin-left 0.3s ease;
+    }
+    .content.shifted {
+      margin-left: 0;
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    .hamburger {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+      color: #fff;
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 1100;
+    }
+    @media (max-width: 900px) {
+      .hamburger {
+        display: block;
+      }
+      .sidebar {
+        transform: translateX(-250px);
+      }
+      .sidebar.active {
+        transform: translateX(0);
+      }
+      .content {
+        margin-left: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <button class="hamburger" id="hamburger">☰</button>
+  <div class="container">
+    <aside class="sidebar" id="sidebar">
+      <h3>Faculty Dashboard</h3>
+      <nav>
+        <ul>
+          <li><a href="#"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+          <li><a href="viewFeedback.html"><i class="fas fa-comments"></i> View Feedback</a></li>
+          <li><a href="profile.html"><i class="fas fa-user-edit"></i> Edit Profile</a></li>
+          <li><a href="updatepass.html"><i class="fas fa-key"></i> Update Password</a></li>
+          <li><a href="logoutfaculty.html"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+        </ul>
+      </nav>
+    </aside>
+    <div class="content" id="content">
+      <div class="header">
+        <h1>Faculty Dashboard</h1>
+        <button class="logout-btn" onclick="window.location.href='logoutfaculty.html';">Logout</button>
+      </div>
+      <div class="welcome">
+        <h2>Welcome, Faculty Member!</h2>
+        <p>Your hub for managing tasks and feedback.</p>
+      </div>
+    </div>
+  </div>
+  <script>
+    document.getElementById("hamburger").addEventListener("click", function() {
+      const sidebar = document.getElementById("sidebar");
+      sidebar.classList.toggle("active");
+    });
+    
+    window.addEventListener("resize", function() {
+      const sidebar = document.getElementById("sidebar");
+      if (window.innerWidth > 900) {
+        sidebar.classList.remove("active");
+      }
+    });
+  </script>
+</body>
+</html>

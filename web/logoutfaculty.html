@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logout Page</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <style>
+        /* Background Animation */
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(-45deg, #6a11cb, #2575fc, #ff6b6b, #ff4757);
+            background-size: 300% 300%;
+            animation: gradientBG 10s ease infinite;
+            font-family: 'Poppins', sans-serif;
+            color: #f8f9fa;
+        }
+
+        .logout-container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .logout-box i {
+            font-size: 80px;
+            color: #ff4757;
+            margin-bottom: 15px;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .logout-box h1 {
+            font-size: 34px;
+            margin-bottom: 12px;
+            font-weight: 600;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        .logout-box p {
+            font-size: 20px;
+            margin-bottom: 15px;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 10px;
+            background: linear-gradient(to right, #ff6b6b, #ff4757, #ff9f43);
+            animation: countdown 5s linear forwards;
+            border-radius: 5px;
+        }
+
+        @keyframes countdown {
+            from { width: 100%; }
+            to { width: 0; }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="logout-container">
+        <div class="logout-box">
+            <i class="fas fa-sign-out-alt"></i>
+            <h1>Thank You for Using Our System!</h1>
+            <p>Your session has ended. We appreciate your time and trust.</p>
+            <p>Come back soon!</p>
+            <h2>Logging Out...</h2>
+            <p>Redirecting in <span id="countdown">5</span> seconds</p>
+            <div class="progress-bar" id="progress-bar"></div>
+        </div>
+    </div>
+    <script>
+        let countdown = 5;
+        const countdownElement = document.getElementById("countdown");
+        
+        const timer = setInterval(() => {
+            countdown--;
+            countdownElement.textContent = countdown;
+            
+            if (countdown === 0) {
+                clearInterval(timer);
+                window.location.href = "index.html";
+            }
+        }, 1000);
+    </script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup Page</title>
+    <link rel="stylesheet" href="singup.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+
+     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+    <div class="signup-container" >
+        <form action="register" class="signup-form" method="get" id="signupForm" novalidate>
+            <h2>Create an account</h2>
+            
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="course">Course:</label>
+            <input type="text" id="course" name="course" required>
+
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="contact" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+
+<!--            <label for="confirm-password">Confirm Password:</label>
+            <input type="password" id="confirm-password" name="confirm-password" required>-->
+
+            <button type="submit">Sign Up</button>
+
+            <p>Already have an account? <a href="index.html">Login</a></p>
+        </form>
+    </div>
+    <script>
+
+document.getElementById("signupForm").addEventListener("submit", function(event) {
+    event.preventDefault(); // Prevent immediate submission
+
+    let username = document.getElementById("username").value.trim();
+    let email = document.getElementById("email").value.trim();
+    let course = document.getElementById("course").value.trim();
+    let phone = document.getElementById("phone").value.trim();
+    let password = document.getElementById("password").value.trim();
+
+    if (username === "" || email === "" || course === "" || phone === "" || password === "") {
+        Swal.fire({
+            icon: 'error',
+            title: 'Incomplete Form!',
+            text: 'Please fill in all required fields.',
+            confirmButtonColor: '#d9534f'
+        });
+        return;
+    }
+
+    // Show a loading animation
+    Swal.fire({
+        title: "Processing...",
+        text: "Please wait while we create your account.",
+        allowOutsideClick: false,
+        showConfirmButton: false,
+        didOpen: () => {
+            Swal.showLoading();
+        }
+    });
+
+    // Submit the form after delay
+    setTimeout(() => {
+        document.getElementById("signupForm").submit();
+    }, 2000);
+});
+</script>
+
+
+
+</body>
+</html>

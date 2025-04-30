@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Password</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* General reset */
+        * {
+            margin: 0;
+            
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .sidebar ul li a {
+            color: #ddd;
+            font-size: 16px;
+            text-decoration: none;
+            padding: 10px 20px;
+            display: flex
+        ;
+            align-items: center;
+            transition: 0.3s;
+        }
+        .container {
+            width: 100%;
+            display: flex;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 300px;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background: #1e1e2f;
+            padding:20px 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            z-index: 100;
+            
+        }
+
+        .sidebar.visible {
+            transform: translateX(0); /* Visible state */
+        }
+
+        .sidebar.hidden {
+            transform: translateX(-300px); /* Hidden state */
+        }
+
+        .profile-section {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .profile-section img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin-bottom: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .profile-section h3 {
+            color: #fff;
+            font-size: 22px;
+        }
+
+        .menu ul {
+            list-style: none;
+        }
+
+        .menu li {
+            margin: 20px 0;
+        }
+
+        .menu li a {
+            color: #ccc;
+            text-decoration: none;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            padding: 10px 15px;
+            border-radius: 8px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .menu li a i {
+            font-size: 20px;
+            margin-right: 10px;
+        }
+
+        .menu li a:hover {
+            background-color: #6a11cb;
+            color: #fff;
+        }
+
+        /* Main content area */
+        .main-content {
+            margin-left: 250px;
+            flex: 1;
+            padding: 40px;
+            background: linear-gradient(135deg, #ffffff, #f9f9f9);
+            color: #333;
+            transition: margin-left 0.3s ease;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .header .title {
+            font-size: 28px;
+            font-weight: 600;
+        }
+
+        .header .logout a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            padding: 10px 20px;
+            border-radius: 5px;
+            background: #e74c3c;
+            transition: 0.3s;
+        }
+
+        .header .logout a:hover {
+            background: #c0392b;
+        }
+
+        .form-container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 30px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-container h2 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .form-container form label {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .form-container form input {
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+
+        .form-container form input:focus {
+            border-color: #6a11cb;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .buttons button {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            flex: 1;
+            margin: 10px 5px;
+            color: white;
+        }
+
+        .buttons button[type="submit"] {
+            background-color: #3498db;
+        }
+
+        .buttons button[type="reset"] {
+            background-color: #e74c3c;
+        }
+
+        /* Hamburger menu */
+        .hamburger {
+            display: none;
+            font-size: 28px;
+            background: none;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 101;
+            transition: color 0.3s;
+        }
+
+        .hamburger.active {
+            color: #fff; /* White color when sidebar is open */
+        }
+
+        /* Adjustments for smaller screens */
+        @media (max-width: 900px) {
+            .hamburger {
+                display: block;
+            }
+
+            .sidebar {
+                transform: translateX(-300px); /* Hidden state */
+            }
+
+            .main-content {
+                margin-left: 0; /* Full-width content */
+            }
+        }
+
+        /* Adjustments for screens smaller than 450px */
+        @media (max-width: 450px) {
+            .hamburger {
+                color: #000; /* Black color for default state */
+            }
+
+            .header .logout a {
+                font-size: 14px;
+                padding: 8px 16px;
+                width: 100%;
+                text-align: center;
+                margin-top: 10px;
+                background: #e74c3c;
+                border-radius: 8px;
+            }
+
+            .buttons button {
+                font-size: 14px;
+                padding: 10px 15px;
+                margin: 5px 2px;
+            }
+
+            .form-container {
+                padding: 20px;
+            }
+        }
+        @media (max-width: 900px) {
+            .hamburger {
+                display: block;
+                color: white; /* Black color for hamburger */
+            }
+        
+            .sidebar {
+                transform: translateX(-300px); /* Keep it hidden initially */
+            }
+        
+            .main-content {
+                margin-left: 0; /* Make content full width */
+            }
+        
+            .header .logout a {
+                font-size: 14px;
+                padding: 8px 14px; /* Reduced padding */
+            }
+        }
+        @media (min-width: 901px) {
+            .hamburger {
+                color: #fff; /* White color when screen width > 900px */
+            }
+        }
+        @media (max-width: 450px) {
+            .header .logout {
+                display: none; /* Hide the logout button */
+            }
+        }
+        
+        @media (min-width: 451px) {
+            .header .logout {
+                display: block; /* Show the logout button */
+            }
+        }
+        .sidebar img {
+            border-radius: 50%;
+            width: 100px;
+            margin-bottom: 10px;
+        } 
+        .sidebar h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        .sidebar {
+            width: 250px;
+            background: #1e1e2f;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 20px;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
+          }
+          
+          .sidebar img {
+            border-radius: 50%;
+            width: 100px;
+            margin-bottom: 10px;
+          }
+          
+          .sidebar h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+          }
+          
+          .sidebar ul {
+            list-style: none;
+            padding: 0;
+            width: 100%;
+          }
+          
+          .sidebar ul li {
+            margin: 10px 0;
+          }
+          
+          .sidebar ul li a {
+            color: #ddd;
+            font-size: 16px;
+            text-decoration: none;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            transition: 0.3s;
+          }
+          
+          .sidebar ul li a:hover {
+            color: #ffd700;
+            background: #333;
+            border-radius: 5px;
+          }
+          
+          .sidebar ul li a i {
+            font-size: 20px; /* Updated size */
+            margin-right: 10px;
+            transition: 0.3s; /* Smooth icon transition */
+          }
+          
+          .sidebar ul li a:hover i {
+            color: #ffd700; /* Hover effect on icon */
+          }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <aside class="sidebar hidden" id="sidebar">
+            <div class="profile-section">
+                <img src="faculty.jpg" alt="Profile Picture">
+                <h3>HELLO SUMIT</h3>
+            </div>
+            <nav class="menu">
+                <ul>
+                    <li><a href="faculty.html" onclick="toggleSidebar()"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                    <li><a href="viewFeedback.html" onclick="toggleSidebar()"><i class="fas fa-comments"></i> View Feedback</a></li>
+                    <li><a href="profile.html" onclick="toggleSidebar()"><i class="fas fa-user-edit"></i> Edit Profile</a></li>
+                    <li><a href="updatepass.html" onclick="toggleSidebar()"><i class="fas fa-key"></i> Update Password</a></li>
+                    <li><a href="logoutfaculty.html" onclick="toggleSidebar()"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                  </ul>
+            </nav>
+        </aside>
+
+        <div class="main-content">
+            <button class="hamburger" id="hamburger" onclick="toggleSidebar()">☰</button>
+            <div class="header">
+                <div class="title">UPDATE PASSWORD</div>
+                <div class="logout"><a href="logoutfaculty.html">Logout</a></div>
+            </div>
+            <div class="form-container">
+                <h2>Update Password</h2>
+                <form action="UpdatePassFaculty" method="post">
+    <label for="old-password">Enter your old password</label>
+    <input type="password" id="old-password" name="old-password" required>
+
+    <label for="new-password">Enter your new password</label>
+    <input type="password" id="new-password" name="new-password" required>
+
+    <label for="confirm-password">Enter your confirm password</label>
+    <input type="password" id="confirm-password" name="confirm-password" required>
+
+    <div class="buttons">
+        <button type="submit">Update My Password</button>
+        <button type="reset">Reset</button>
+    </div>
+</form>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById("sidebar");
+            const hamburger = document.getElementById("hamburger");
+            sidebar.classList.toggle("hidden");
+            sidebar.classList.toggle("visible");
+            if (sidebar.classList.contains("visible")) {
+                hamburger.classList.add("active");
+            } else {
+                hamburger.classList.remove("active");
+            }
+        }
+
+        function setSidebarVisibility() {
+            const sidebar = document.getElementById("sidebar");
+            const hamburger = document.getElementById("hamburger");
+            const isLargeScreen = window.innerWidth > 900;
+
+            if (isLargeScreen) {
+                sidebar.classList.remove("hidden");
+                sidebar.classList.add("visible");
+                hamburger.classList.add("active");
+            } else {
+                sidebar.classList.add("hidden");
+                sidebar.classList.remove("visible");
+                hamburger.classList.remove("active");
+            }
+        }
+
+        window.addEventListener("load", setSidebarVisibility);
+        window.addEventListener("resize", setSidebarVisibility);
+    </script>
+</body>
+
+</html>

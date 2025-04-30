@@ -1,0 +1,146 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: url(bg.avif);
+    display: flex;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Glassmorphism effect */
+.container-border {
+    background: transparent;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+    width: 350px;
+    padding: 40px 30px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.login-container h1 {
+    font-size: 28px;
+    font-weight: 600;
+    color: black;
+    margin-bottom: 20px;
+}
+
+.form-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.input-group {
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.input-group label {
+    font-size: 14px;
+    color: black;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.input-field {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.25);
+    color: black;
+    font-size: 14px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+.input-field:focus {
+    background: rgba(255, 255, 255, 0.35);
+    outline: none;
+}
+
+.forgot-pwd {
+    width: 100%;
+    text-align: right;
+    margin-bottom: 20px;
+    
+}
+
+.forgot-pwd a {
+    text-decoration: none;
+    color: black;
+    font-size: 12px;
+    transition: color 0.3s;
+}
+
+.forgot-pwd a:hover {
+    color: #f1c40f;
+}
+
+.login-btn button {
+    width: 100%;
+    padding: 14px;
+    background-color: #4a69bd;
+    border: none;
+    border-radius: 12px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.login-btn button:hover {
+    background-color: #3b5998;
+    transform: scale(1.05);
+}
+
+.signup {
+    margin-top: 25px;
+    font-size: 14px;
+    color: black;
+}
+
+.signup a {
+    text-decoration: none;
+    color: blue;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.signup a:hover {
+    color: #ffeb3b;
+}
+
+@media (max-width: 600px) {
+    .container-border {
+        width: 90%;
+        padding: 30px;
+    }
+
+    .login-container h1 {
+        font-size: 24px;
+    }
+
+    .input-field {
+        padding: 10px;
+    }
+
+    .login-btn button {
+        padding: 12px;
+        font-size: 14px;
+    }
+}

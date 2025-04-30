@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Profile</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* General styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #c850c0, #4158d0);
+            margin: 0;
+            padding: 0;
+            height: 100vh; /* Ensures full height */
+            display: flex;
+        }
+
+        /* Container styles */
+        .container {
+            display: flex;
+            width: 100%;
+            height: 100vh; /* Full height for both sidebar and content */
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            color: white;
+            width: 260px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start; /* Aligns sidebar content to the top */
+            height: 100%; /* Makes the sidebar take full height */
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .user-info {
+            text-align: center;
+        }
+
+        .user-info img {
+            border-radius: 50%;
+            width: 80px;
+            margin-bottom: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .menu {
+            margin-top: 40px; /* Move menu down */
+            flex-grow: 1; /* Fills remaining space in the sidebar */
+        }
+
+        .menu ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .menu ul li {
+            margin: 20px 0;
+        }
+
+        .menu ul li a {
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .menu ul li a:hover {
+            transform: translateX(10px);
+            color: #f39c12;
+        }
+
+        .menu ul li a i {
+            margin-right: 12px;
+        }
+
+        /* Content styles */
+        .content {
+            flex-grow: 1; /* Makes content container grow to fill the available space */
+            padding: 40px;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            height: auto;
+            overflow-y: auto; /* Ensures content can scroll if it overflows */
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            font-weight: 600;
+        }
+
+        .logout-btn {
+            background: #e74c3c;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 10px;
+            font-size: 14px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .logout-btn:hover {
+            background: #c0392b;
+            box-shadow: 0 6px 20px rgba(192, 57, 43, 0.3);
+        }
+
+        /* Profile section styles */
+        .profile-photo-container {
+            margin-bottom: 20px;
+        }
+
+        .profile-photo-container label {
+            display: block;
+            color: #ffffff;
+            margin-bottom: 8px;
+        }
+
+        .profile-photo-preview {
+            display: block;
+            margin-top: 10px;
+            width: 100px;
+            height: auto;
+            border-radius: 10px;
+            border: 2px solid #ffffff;
+        }
+
+        /* Form section styles */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #ffffff;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 5px;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="tel"]:focus,
+        select:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+
+        /* Button styles */
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Media queries for responsive design */
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 200px;
+            }
+
+            .content {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="user-info">
+                <img src="admin.png" alt="Admin Image" class="user-image">
+                <h3>Admin Panel</h3>
+            </div>
+            <nav class="menu">
+           <ul>
+                        <li><a href="admin.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                        <li><a href="addfaculty.html"><i class="fas fa-user-plus"></i> Add Faculty</a></li>
+                        <li><a href="managefaculty.jsp"><i class="fas fa-users-cog"></i> Manage Faculty</a></li>
+                        <li><a href="managestudents.html"><i class="fas fa-user-graduate"></i> Manage Students</a></li>
+                        <li><a href="adminveiwFeedback.jsp"><i class="fas fa-comments"></i> View Feedbacks</a></li>
+                        <li><a href="createquestions.jsp"><i class="fas fa-question-circle"></i> Create Feedback Questions</a></li>
+                        <li><a href="questionslist.jsp"><i class="fas fa-edit"></i> Edit Question</a></li>
+                        <li><a href="adminprofile.html"><i class="fas fa-user"></i> View/Edit Profile</a></li>
+                        <li><a href="adminupdatepass.html"><i class="fas fa-key"></i> Update Password</a></li>
+                        <li><a href="logoutstudent.html"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                    </ul>
+            </nav>
+        </aside>
+
+        <div class="content">
+            <div class="header">
+                <h1>Admin Profile</h1>
+                <button class="logout-btn" onclick="window.location.href='logout.html';">Logout</button>
+            </div>
+
+            <div class="profile-photo-container">
+                <label for="profile-photo">Profile Photo:</label>
+                <input type="file" id="profile-photo" name="profile-photo" accept="image/*">
+                <img id="profile-photo-preview" src="admin.png" alt="Profile Photo" class="profile-photo-preview">
+            </div>
+
+            <form id="admin-profile-form">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="mobile-no">Mobile No:</label>
+                    <input type="tel" id="mobile-no" name="mobile-no" required>
+                </div>
+                <div class="form-group">
+                    <label for="program">Program:</label>
+                    <input type="text" id="program" name="program" required>
+                </div>
+                <div class="form-group">
+                    <label for="semester">Semester:</label>
+                    <select id="semester" name="semester" required>
+                        <option value="1">I</option>
+                        <option value="2">II</option>
+                        <option value="3">III</option>
+                        <option value="4">IV</option>
+                        <option value="5">V</option>
+                        <option value="6">VI</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="course-name">Course Name:</label>
+                    <input type="text" id="course-name" name="course-name" required>
+                </div>
+                <button type="submit" id="update-profile-btn">Update Profile</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Get the form elements
+        const form = document.getElementById('admin-profile-form');
+        const profilePhotoInput = document.getElementById('profile-photo');
+        const profilePhotoPreview = document.getElementById('profile-photo-preview');
+
+        // Add event listener for form submission
+        form.addEventListener('submit', updateProfile);
+
+        // Function to update profile
+        function updateProfile(event) {
+            event.preventDefault();
+            const formData = new FormData(form);
+            // Log the form data to the console (for demonstration)
+            console.log('Profile updated with the following data:');
+            for (let [key, value] of formData.entries()) {
+                console.log(`${key}: ${value}`);
+            }
+            alert("Profile updated successfully!");
+        }
+
+        // Preview the selected profile photo
+        profilePhotoInput.addEventListener('change', function() {
+            const file = this.files[0];
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                profilePhotoPreview.src = event.target.result;
+            };
+            reader.readAsDataURL(file);
+        });
+
+        function logout() {
+            // Show custom message
+            alert("Thank you for using the Faculty Management System. Have a great day!");
+            
+            // Close the current tab
+            window.close();
+            
+            // If the window.close() method doesn't work (as it might be blocked by some browsers),
+            // we can redirect to a blank page as a fallback
+            window.location.href = "index.html";
+        }
+    </script>
+</body>
+</html>

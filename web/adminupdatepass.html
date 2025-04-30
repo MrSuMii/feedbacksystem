@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Password</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="adminupdatepassword.css" class="rel">
+    <style>
+         /* General styles */
+ body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #c850c0, #4158d0);
+    margin: 0;
+    padding: 0;
+    height: 100vh; /* Ensures full height */
+    display: flex;
+}
+
+/* Container styles */
+.container {
+    display: flex;
+    width: 100%;
+    height: 100vh; /* Full height for both sidebar and content */
+}
+
+/* Sidebar Styles */
+.sidebar {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    color: white;
+    width: 260px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Aligns sidebar content to the top */
+    height: 100%; /* Makes the sidebar take full height */
+    border-radius: 15px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.user-info {
+    text-align: center;
+}
+
+.user-info img {
+    border-radius: 50%;
+    width: 80px;
+    margin-bottom: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.menu {
+    margin-top: 40px; /* Move menu down */
+    flex-grow: 1; /* Fills remaining space in the sidebar */
+}
+
+.menu ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.menu ul li {
+    margin: 20px 0;
+}
+
+.menu ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.menu ul li a:hover {
+    transform: translateX(10px);
+    color: #f39c12;
+}
+
+.menu ul li a i {
+    margin-right: 12px;
+}
+
+/* Content styles */
+.content {
+    flex-grow: 1; /* Makes content container grow to fill the available space */
+    padding: 40px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    overflow-y: auto; /* Ensures content can scroll if it overflows */
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.header h1 {
+    font-size: 28px;
+    font-weight: 600;
+}
+
+.logout-btn {
+    background: #e74c3c;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 10px;
+    font-size: 14px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+    transition: all 0.3s ease;
+}
+
+.logout-btn:hover {
+    background: #c0392b;
+    box-shadow: 0 6px 20px rgba(192, 57, 43, 0.3);
+}
+
+/* Form section styles */
+.form-container {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    margin-top: 20px; /* Spacing from the header */
+}
+
+.form-container h2 {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: #ffffff;
+}
+
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    transition: border-color 0.3s;
+}
+
+input[type="password"]:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+/* Button styles */
+button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Media queries for responsive design */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 200px;
+    }
+
+    .content {
+        padding: 20px;
+    }
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="user-info">
+                <img src="admin.png" alt="Admin Image" class="user-image">
+                <h3>Admin Panel</h3>
+            </div>
+            <nav class="menu">
+         <ul>
+                        <li><a href="admin.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                        <li><a href="addfaculty.html"><i class="fas fa-user-plus"></i> Add Faculty</a></li>
+                        <li><a href="managefaculty.jsp"><i class="fas fa-users-cog"></i> Manage Faculty</a></li>
+                        <li><a href="managestudents.html"><i class="fas fa-user-graduate"></i> Manage Students</a></li>
+                        <li><a href="adminveiwFeedback.jsp"><i class="fas fa-comments"></i> View Feedbacks</a></li>
+                        <li><a href="createquestions.jsp"><i class="fas fa-question-circle"></i> Create Feedback Questions</a></li>
+                        <li><a href="questionslist.jsp"><i class="fas fa-edit"></i> Edit Question</a></li>
+                        <li><a href="adminprofile.html"><i class="fas fa-user"></i> View/Edit Profile</a></li>
+                        <li><a href="adminupdatepass.html"><i class="fas fa-key"></i> Update Password</a></li>
+                        <li><a href="logoutstudent.html"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                    </ul>
+            </nav>
+        </aside>
+
+        <div class="content">
+            <div class="header">
+                <h1>UPDATE PASSWORD</h1>
+                <button class="logout-btn" onclick="window.location.href='logout.html';">Logout</button>
+            </div>
+            <div class="form-container">
+                <h2>Update Password</h2>
+                <form id="update-password-form">
+                    <label for="old-password">Enter your old password</label>
+                    <input type="password" id="old-password" name="old-password" required>
+
+                    <label for="new-password">Enter your new password</label>
+                    <input type="password" id="new-password" name="new-password" required>
+
+                    <label for="confirm-password">Enter your confirm password</label>
+                    <input type="password" id="confirm-password" name="confirm-password" required>
+
+                    <div class="buttons">
+                        <button type="submit">Update My Password</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Add event listener for form submission
+        document.getElementById('update-password-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const oldPassword = document.getElementById('old-password').value;
+            const newPassword = document.getElementById('new-password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
+
+            if (newPassword !== confirmPassword) {
+                alert("New password and confirm password do not match.");
+                return;
+            }
+
+            // Here you would typically send the data to the server for processing
+            console.log('Old Password:', oldPassword);
+            console.log('New Password:', newPassword);
+            alert("Password updated successfully!");
+        });
+
+        function logout() {
+            // Show custom message
+            alert("Thank you for using the Faculty Management System. Have a great day!");
+            
+            // Close the current tab
+            window.close();
+            
+            // If the window.close() method doesn't work (as it might be blocked by some browsers),
+            // we can redirect to a blank page as a fallback
+            window.location.href = "index.html";
+        }
+    </script>
+</body>
+</html>
